@@ -3,7 +3,7 @@ import "../assets/css/product.css";
 import { useStateValue } from "../context";
 
 export default function Product({ id, title, image, price, rating }) {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{}, dispatch] = useStateValue();
 
   const addToBasket = () => {
     // dispatch some action
@@ -30,7 +30,7 @@ export default function Product({ id, title, image, price, rating }) {
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <p>
+              <p key={i}>
                 <span role="img" aria-label="star">
                   ⭐️
                 </span>

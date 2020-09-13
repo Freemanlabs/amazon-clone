@@ -18,12 +18,10 @@ const promise = loadStripe(
 );
 
 function App() {
-  const [{ user }, dispatch] = useStateValue();
+  const [{}, dispatch] = useStateValue();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      console.log("the user is >>> ", authUser);
-
       authUser
         ? dispatch({
             type: "SET_USER",

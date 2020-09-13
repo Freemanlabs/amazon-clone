@@ -7,7 +7,7 @@ import { useStateValue } from "../context";
 import { auth } from "../firebase";
 
 export default function Header() {
-  const [{ basket, user }, dispatch] = useStateValue();
+  const [{ basket, user }] = useStateValue();
   const handleAuth = () => {
     if (user) {
       auth.signOut();
@@ -29,7 +29,7 @@ export default function Header() {
         <SearchIcon className="header__searchIcon" />
       </div>
       <div className="header__nav">
-        <Link to={!user && "/login"}>
+        <Link to="/login">
           <div className="header__option" onClick={handleAuth}>
             <span className="header__optionLineOne">
               Hello {user ? user?.email : "Guest"}

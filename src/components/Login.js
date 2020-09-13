@@ -28,7 +28,6 @@ export default function Login() {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((auth) => {
-        console.log(auth);
         if (auth) {
           history.push("/");
         }

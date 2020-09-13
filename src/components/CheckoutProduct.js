@@ -10,7 +10,7 @@ export default function CheckoutProduct({
   rating,
   hideButton,
 }) {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{}, dispatch] = useStateValue();
   const removeFromBasket = () => {
     dispatch({
       type: "REMOVE_FROM_BASKET",
@@ -34,7 +34,7 @@ export default function CheckoutProduct({
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <p>
+              <p key={i}>
                 <span role="img" aria-label="star">
                   ⭐️
                 </span>

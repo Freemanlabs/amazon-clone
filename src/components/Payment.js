@@ -7,6 +7,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import axios from "./axios";
 import { db } from "../firebase";
+import FlipMove from "react-flip-move";
 
 export default function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -37,8 +38,6 @@ export default function Payment() {
     };
     getClientSecret();
   }, [basket]);
-
-  console.log("THE SECRET IS >>>", clientSecret);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -103,15 +102,23 @@ export default function Payment() {
             <h3>Review items and delivery</h3>
           </div>
           <div className="payment__item">
-            {basket.map((item) => (
-              <CheckoutProduct
-                id={item.id}
-                title={item.title}
-                image={item.image}
-                price={item.price}
-                rating={item.rating}
-              />
-            ))}
+            <FlipMove
+              appearAnimation="fade"
+              enterAnimation="fade"
+              leaveAnimation="fade"
+            >
+              {basket.map((item) => (
+                <div key={item.id}>
+                  <CheckoutProduct
+                    id={item.id}
+                    title={item.title}
+                    image={item.image}
+                    price={item.price}
+                    rating={item.rating}
+                  />
+                </div>
+              ))}
+            </FlipMove>
           </div>
         </div>
 
